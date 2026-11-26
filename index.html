@@ -20,12 +20,15 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2308080a'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='26' font-weight='700' fill='%23f4efe4' text-anchor='middle'%3Eiw%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/fonts-ui.css">
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/theme-2026.css">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 <a class="skip" href="#works">к работам</a>
 <div class="grain" aria-hidden="true"></div>
+<div class="bg-fx" aria-hidden="true"><div class="bg-plane"></div><canvas id="bgParticles"></canvas></div>
 
 <header class="site-head">
   <div class="head-inner">
@@ -43,6 +46,8 @@
 <main>
   <section class="hero">
     <div class="hero-glow" aria-hidden="true"></div>
+    <div class="blob blob-a" aria-hidden="true"></div>
+    <div class="blob blob-b" aria-hidden="true"></div>
     <p class="hero-kicker"><span class="live" aria-hidden="true"></span>открыт к проектам</p>
     <h1 class="hero-title" data-split>iwakura</h1>
     <p class="hero-sub">Интерфейсы, сайты и айдентика. Пять проектов и коллекция логотипов — от грузовой логистики до архитектурного бюро.</p>
@@ -58,21 +63,27 @@
 
   <div class="strip" aria-hidden="true">
     <div class="strip-track">
-      <span>интерфейсы</span><span>сайты</span><span>айдентика</span><span>дизайн-системы</span><span>упаковка</span><span>арт-дирекшн</span>
-      <span>интерфейсы</span><span>сайты</span><span>айдентика</span><span>дизайн-системы</span><span>упаковка</span><span>арт-дирекшн</span>
+      <div class="strip-group">
+        <span>интерфейсы</span><span>сайты</span><span>айдентика</span><span>дизайн-системы</span><span>упаковка</span><span>арт-дирекшн</span>
+      </div>
     </div>
   </div>
 
   <section class="section" id="works">
     <div class="wrap">
-      <div class="sec-head reveal">
+      <div class="sec-head solo reveal">
         <p class="label">01 — избранное</p>
         <h2>работы <em>и знаки</em></h2>
-        <p class="sec-note">Пять клиентских кейсов и коллекция знаков: продать услугу, объяснить продукт, упаковать вкус. У каждой работы — своя страница с решением и цифрами.</p>
       </div>
 
+      <div class="filters" role="group" aria-label="Фильтр работ">
+        <button class="fchip is-on" type="button" data-filter="all" aria-pressed="true">все <sup>6</sup></button>
+        <button class="fchip" type="button" data-filter="web" aria-pressed="false">сайты</button>
+        <button class="fchip" type="button" data-filter="product" aria-pressed="false">продукт</button>
+        <button class="fchip" type="button" data-filter="brand" aria-pressed="false">брендинг</button>
+      </div>
       <div class="works">
-        <a class="card reveal" href="works/sever.html">
+        <a class="card reveal" href="works/sever.html" data-cat="web">
           <div class="card-media">
             <img src="assets/img/sever.jpg" alt="Ночная железная дорога — обложка кейса «Север»">
             <span class="card-tag">логистика</span>
@@ -86,7 +97,7 @@
           </div>
         </a>
 
-        <a class="card reveal" href="works/zerno.html">
+        <a class="card reveal" href="works/zerno.html" data-cat="brand">
           <div class="card-media">
             <img src="assets/img/zerno.jpg" alt="Кофейные зёрна и чашка — обложка кейса «Зерно»">
             <span class="card-tag">брендинг</span>
@@ -100,7 +111,7 @@
           </div>
         </a>
 
-        <a class="card reveal" href="works/os.html">
+        <a class="card reveal" href="works/os.html" data-cat="product">
           <div class="card-media">
             <img src="assets/img/os.jpg" alt="Стеклянные ленты на тёмном фоне — обложка кейса «Ось»">
             <span class="card-tag">продукт</span>
@@ -114,7 +125,7 @@
           </div>
         </a>
 
-        <a class="card reveal" href="works/volna.html">
+        <a class="card reveal" href="works/volna.html" data-cat="product">
           <div class="card-media">
             <img src="assets/img/volna.jpg" alt="Тёмная вода — обложка кейса «Волна»">
             <span class="card-tag">финтех</span>
@@ -128,7 +139,7 @@
           </div>
         </a>
 
-        <a class="card reveal" href="works/arka.html">
+        <a class="card reveal" href="works/arka.html" data-cat="web">
           <div class="card-media">
             <img src="assets/img/arka.jpg" alt="Бетонная архитектура — обложка кейса «Арка»">
             <span class="card-tag">сайт</span>
@@ -141,7 +152,7 @@
             <span class="year">2024</span>
           </div>
         </a>
-        <a class="card reveal" href="works/logos.html">
+        <a class="card reveal" href="works/logos.html" data-cat="brand">
           <div class="card-media">
             <img src="assets/img/logos.jpg" alt="Лист логотипов: Orée, Monro, Véla, Baron, Tavr, Palma">
             <span class="card-tag">логотипы</span>
@@ -171,7 +182,11 @@
           <li class="reveal"><span class="num">02</span><div><h3>Один язык на весь продукт</h3><p>Сетка, шрифт, цвет и отступы работают на всех экранах — от главной до письма клиенту.</p></div></li>
           <li class="reveal"><span class="num">03</span><div><h3>Отдаю систему, а не картинки</h3><p>Компоненты, состояния и правила. Команда собирает новые страницы без меня и не ломает стиль.</p></div></li>
         </ul>
-        <ul class="tags">
+        <ul class="stats-row">
+          <li><b data-count="6">0</b><span>работ в портфолио</span></li>
+          <li><b data-count="9">0</b><span>логотипов</span></li>
+          <li><b data-count="5">0</b><span>отраслей</span></li>
+        </ul>        <ul class="tags">
           <li>Figma</li><li>дизайн-системы</li><li>прототипы</li><li>типографика</li><li>анимация</li><li>вёрстка</li>
         </ul>
       </div>
@@ -186,10 +201,10 @@
         <p class="sec-note">Четыре шага, без сюрпризов по срокам. Правки — внутри шагов, а не после сдачи.</p>
       </div>
       <ol class="steps">
-        <li class="step reveal"><span class="n">01</span><h3>Бриф</h3><p>Созвон на 30 минут. Задачи, аудитория, ограничения, примеры, которые нравятся и почему.</p></li>
+        <li class="step reveal"><span class="n">01</span><h3>Бриф</h3><p>Переписка в Telegram. Задачи, аудитория, ограничения, примеры, которые нравятся и почему.</p></li>
         <li class="step reveal"><span class="n">02</span><h3>Структура</h3><p>Карта экранов и прототип: что человек видит первым и куда идёт дальше.</p></li>
         <li class="step reveal"><span class="n">03</span><h3>Визуал</h3><p>Первый экран целиком, дальше — остальные. Две итерации правок внутри этапа.</p></li>
-        <li class="step reveal"><span class="n">04</span><h3>Передача</h3><p>Макеты, компоненты, шрифты и правила. Плюс созвон с разработкой, если нужно.</p></li>
+        <li class="step reveal"><span class="n">04</span><h3>Передача</h3><p>Макеты, компоненты, шрифты и правила. Плюс короткая инструкция для разработки.</p></li>
       </ol>
     </div>
   </section>
@@ -199,7 +214,7 @@
       <p class="label reveal">04 — контакт</p>
       <h2 class="reveal">есть <em>проект?</em></h2>
       <p class="lead reveal">Напишите в Telegram — отвечу в течение дня, задам пару вопросов и скажу честно, реально ли сделать это за ваши сроки.</p>
-      <div class="reveal">
+      <div class="contact-actions reveal">
         <a class="tg" href="https://t.me/iwakura333" target="_blank" rel="noopener noreferrer" data-magnetic>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M21.5 3.5 2.8 10.9c-.9.3-.9 1.5 0 1.8l4.4 1.5 1.7 5.3c.2.7 1.1.9 1.6.3l2.4-2.6 4.5 3.2c.6.4 1.5.1 1.7-.7l3.2-15c.2-.9-.7-1.6-1.8-1.2Z" stroke-linejoin="round"/><path d="M9 13.9 18 6.6" stroke-linecap="round"/></svg>
           @iwakura333
@@ -207,9 +222,8 @@
         <button class="copy" type="button" data-copy="@iwakura333" aria-label="Скопировать ник в Telegram"><span>скопировать</span></button>
       </div>
       <div class="contact-foot reveal">
-        <span>Москва · UTC+3</span>
-        <span>беру 1–2 проекта в месяц</span>
-        <span>ответ в течение дня</span>
+        <span>МСК+2 · UTC+5</span>
+          <span>ответ в течение дня</span>
       </div>
     </div>
   </section>
@@ -224,5 +238,8 @@
 </footer>
 
 <script src="assets/js/main.js"></script>
+<script src="assets/js/fx.js"></script>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
 </body>
 </html>
