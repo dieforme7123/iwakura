@@ -1,4 +1,4 @@
 ﻿User-agent: *
 Allow: /
 
-Sitemap: https://USERNAME.github.io/iwakura-portfolio/sitemap.xml
+Sitemap: https://dieforme7123.github.io/iwakura/sitemap.xml
